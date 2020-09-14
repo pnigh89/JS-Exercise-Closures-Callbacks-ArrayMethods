@@ -33,9 +33,15 @@ console.log(processFirstItem(['foo', 'bar'], string))
  * 
  * 1. What is the difference between counter1 and counter2?
  * 
+ * Counter 2 resets to zero every time, allow for continuous increments upon each new invocation.
+ * 
  * 2. Which of the two uses a closure? How can you tell?
  * 
- * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
+ * Counter 2 is a closure because the inner scope refrences a variable on the outer scope.
+ * 
+ * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better?
+ * 
+ * Count 1 better if you want the whole reset back to zero everytime. Count 2 better when you want to increment on subsequent invocations. 
  *
 */
 
@@ -49,6 +55,8 @@ function counterMaker() {
 
 const counter1 = counterMaker();
 
+
+
 // counter2 code
 let count = 0;
 
@@ -56,16 +64,22 @@ function counter2() {
   return count++;
 }
 
-
+console.log(counter2())
+console.log(counter2())
+console.log(counter2())
 /* Task 2: inning() 
 
 Write a function called `inning` that generates a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
+function inning(){
 
     /*Code Here*/
 
+    return Math.round(Math.random()*2)
+  
 }
+
+console.log(inning());
 
 /* Task 3: finalScore()
 
@@ -81,11 +95,29 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(/*code Here*/){
+function finalScore(inning, numInning){
 
+  let home = 0;
+  let away = 0;
+
+  for (i = 0; i < numInning; i++) {
+    home = home + inning();
+  }
+  
+  for (i = 0; i < numInning; i++) {
+    away = away + inning();
+  }
+ 
+
+  return {
+    Home: home,
+
+    Away: away,
+  }
   /*Code Here*/
 
 }
+console.log(finalScore(inning, 9))
 
 /* Task 4: 
 
@@ -112,5 +144,8 @@ Final Score: awayTeam - homeTeam */
 function scoreboard(/* CODE HERE */) {
   /* CODE HERE */
 }
+
+
+
 
 
