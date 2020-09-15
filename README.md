@@ -44,6 +44,10 @@ Find the file `index.js` and complete the tasks until your tests are passing.
 Edit the `ReadMe` file with your answers.
 
 1. In your own words, define closure (1-2 sentences).
+
+Closures give us the ability to put functions together.; code that’s been ID’d elsewhere that we can use later.
+
+
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -65,8 +69,17 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+
+At the variables dansRolls and zoesRoll. They share same function body but store different lexical environments
+
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+
+Name is always the same, value of newRoll could be different.
+
+
 c. What is the lexical scope of `newRoll`? 
+
+Only available within the youngest child or most nested scope.
 
 ### Task 3 - Stretch Goals
 
